@@ -35,12 +35,12 @@ class Conta:
     def extrato(self):
         return (f'Saldo de {self.__saldo} do titular {self.__titular}')
     
-    def pode_sacar(self, valor):
+    def __pode_sacar(self, valor):
         if (self.__saldo + self.__limite >= valor):
             return True
         
     def saque(self, valor):
-        if (self.pode_sacar(valor)):
+        if (self.__pode_sacar(valor)):
             self.__saldo -= valor
             self.__milhas += (valor * 0.05)
 
