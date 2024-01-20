@@ -3,49 +3,49 @@ class Conta:
     limites = {'BB': 1000.0, 'Bradesco': 800.0, 'Caixa': 1200.0}
 
     def __init__(self, titular, numero, banco, agencia, saldo):
-        self.__titular = titular
-        self.__numero = numero
-        self.__banco = banco
-        self.__agencia = agencia
-        self.__saldo = saldo
-        self.__limite = self.limites[banco]
-        self.__milhas = 0
+        self._titular = titular
+        self._numero = numero
+        self._banco = banco
+        self._agencia = agencia
+        self._saldo = saldo
+        self._limite = self.limites[banco]
+        self._milhas = 0
         
 
     @property
     def titular(self):
-        return self.__titular
+        return self._titular
 
     @property
     def numero(self):
-        return self.__numero
+        return self._numero
 
     @property
     def banco(self):
-        return self.__banco
+        return self._banco
 
     @property
     def agencia(self):
-        return self.__agencia
+        return self._agencia
     
     @property
     def limite(self):
-        return self.__limite
+        return self._limite
     
     def extrato(self):
-        return (f'Saldo de {self.__saldo} do titular {self.__titular}')
+        return (f'Saldo de {self._saldo} do titular {self._titular}')
     
-    def __pode_sacar(self, valor):
-        if (self.__saldo + self.__limite >= valor):
+    def _pode_sacar(self, valor):
+        if (self._saldo + self._limite >= valor):
             return True
         
     def saque(self, valor):
-        if (self.__pode_sacar(valor)):
-            self.__saldo -= valor
-            self.__milhas += (valor * 0.05)
+        if (self._pode_sacar(valor)):
+            self._saldo -= valor
+            self._milhas += (valor * 0.05)
 
     def depósito(self, valor):
-        self.__limite += valor
+        self._limite += valor
 
     @property
     def milhas(self):
